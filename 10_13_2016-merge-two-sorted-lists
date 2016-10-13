@@ -1,8 +1,5 @@
 // https://leetcode.com/problems/merge-two-sorted-lists/
 
-/*
- * Name
- */
 ### NAME : YUAN ZHOU
 # Definition for singly-linked list.
 # class ListNode(object):

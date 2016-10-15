@@ -6,7 +6,7 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        # logN, like binary search. But here we need 2 points to determine which half the target is.
+        # logN, like binary search. But here we need 2 points to determine which half the target is in.
         # THe 2 points should be the first point and the middle point.
         
         # check empty

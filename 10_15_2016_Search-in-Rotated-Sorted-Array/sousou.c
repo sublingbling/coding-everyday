@@ -1,17 +1,13 @@
 // bloody ugly one...
 
 int search(int* nums, int numsSize, int target) {
-    if (!nums || 0==numsSize) return -1;
-    if (1 == numsSize && target != nums[0]) return -1;
-    
+    if (!nums || 0==numsSize) return -1;    
     if (target == nums[0]) return 0;
-    if (target == nums[numsSize/2]) return numsSize/2;
-    if (target == nums[numsSize-1]) return numsSize-1;
     
     if (nums[0] < nums[numsSize/2])
     {
         // if pivot is at right half
-        if (target>nums[0] && target<nums[numsSize/2])
+        if (target>=nums[0] && target<nums[numsSize/2])
         {
             // left half
             return search(nums, numsSize/2, target);
@@ -27,7 +23,7 @@ int search(int* nums, int numsSize, int target) {
     else
     {
         // pivot is at left half
-        if (target>nums[numsSize/2] && target<nums[numsSize-1])
+        if (target>=nums[numsSize/2] && target<=nums[numsSize-1])
         {
             // right half
             int retVal = search(nums+numsSize/2, numsSize - numsSize/2, target);

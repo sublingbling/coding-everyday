@@ -55,4 +55,5 @@ class Solution(object):
                 return idx
             else :
                 return n/2 + idx
+        # above logic could also be simplified
         

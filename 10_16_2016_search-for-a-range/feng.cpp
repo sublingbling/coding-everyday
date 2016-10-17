@@ -49,3 +49,43 @@ public:
         return result_v;
     }
 };
+
+
+
+//combine chang and su's solution
+
+class Solution {
+public:
+    
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> result_v(2,-1);
+        
+        int l = 0;
+        int r = nums.size()-1;
+
+        //find left most
+        while(l<r){
+            int m= (l+r)/2;   //make sure left bound move right, right bound move left
+            if(nums[m] == target) r=m; //keep at least one equeal to target
+            else if(nums[m] < target) l=m+1;  //delete all left element small than target
+            else r=m-1; //delete all right element large than target
+        }
+        if(nums[l]!=target) return result_v;
+        
+        result_v[0] = l;
+        
+        //find right most
+        r = nums.size()-1;
+        
+        while(l<r){ 
+            int m=(l+r+1)/2; //add bias, make sure left bound move right, right bound move left
+            if(nums[m] == target) l=m;
+            else if(nums[m] > target) r=m-1;
+            else l=m+1;
+        }
+        
+        result_v[1] = r;
+        return result_v;
+    }
+};
+

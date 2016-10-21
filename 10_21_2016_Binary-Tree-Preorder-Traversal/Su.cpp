@@ -34,18 +34,17 @@ public:
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<TreeNode*> preOrder;
+        stack<TreeNode*> preOrder;
         vector<int> result;
         if(root==NULL) return result;
         
-        preOrder.push_back(root);
+        preOrder.push(root);
         while(preOrder.size()){
-            int id = preOrder.size()-1;
-            root=preOrder[id];
-            preOrder.pop_back();
+            root=preOrder.top();
+            preOrder.pop();
             result.push_back(root->val);
-            if(root->right) preOrder.push_back(root->right);
-            if(root->left) preOrder.push_back(root->left);
+            if(root->right) preOrder.push(root->right);
+            if(root->left) preOrder.push(root->left);
         }
         
         return result;

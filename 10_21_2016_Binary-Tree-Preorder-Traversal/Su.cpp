@@ -21,3 +21,33 @@ public:
         return preOrder;
     }
 };
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<TreeNode*> preOrder;
+        vector<int> result;
+        if(root==NULL) return result;
+        
+        preOrder.push_back(root);
+        while(preOrder.size()){
+            int id = preOrder.size()-1;
+            root=preOrder[id];
+            preOrder.pop_back();
+            result.push_back(root->val);
+            if(root->right) preOrder.push_back(root->right);
+            if(root->left) preOrder.push_back(root->left);
+        }
+        
+        return result;
+    }
+};

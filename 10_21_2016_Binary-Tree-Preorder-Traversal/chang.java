@@ -33,3 +33,31 @@ public class Solution {
         return result;
     }
 }
+/*-----------------*/
+//traversal
+public class Solution {
+    /**
+     * @param root: The root of binary tree.
+     * @return: Preorder in ArrayList which contains node values.
+     */
+    public ArrayList<Integer> preorderTraversal(TreeNode root) {
+        // recursive 
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        traversal(root, result);
+        return result;
+
+    }
+    
+    private void traversal(TreeNode root, ArrayList<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        result.add(root.val);
+        traversal(root.left, result);
+        traversal(root.right, result);
+        return;
+    }
+}
+/*------------------*/
+//non-recursive
+

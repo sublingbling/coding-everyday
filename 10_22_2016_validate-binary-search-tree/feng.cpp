@@ -1,30 +1,29 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    bool isValidSerialization(string preorder) {
-        stack<char> s;
-        int idx = 0;
-        while(idx < preorder.size()){
-            if(preorder[idx]==',') idx++;
-            else if(preorder[idx]!=','){
-                if(preorder[idx]=='#' && (!s.empty())){
-                    while(s.top()=='#'){
-                        s.pop();
-                        if(s.empty()) return false;
-                        s.pop();
-                        if(s.empty()) break;
-                    }
-                    s.push('#');
-                }
-                else{
-                    s.push(preorder[idx]);
-                }
-                while(preorder[idx]!=','){idx++; if(idx==preorder.size()) break;}
-            }
-            
+    void inOrderTravel(TreeNode* r, vector<int>& v){
+        if(r==NULL) return;
+        inOrderTravel(r->left,v);
+        v.push_back(r->val);
+        inOrderTravel(r->right,v);
+    }
+    bool isValidBST(TreeNode* root) {
+        if(root == NULL) return true;
+        vector<int> v;
+        inOrderTravel(root,v);
+        
+        for(int i=1;i<v.size();i++){
+            if(v[i-1]>=v[i]) return false;
         }
-        if(s.size()==1){
-            if( s.top()=='#') return true;
-        }
-        return false;
+        
+        return true;
     }
 };

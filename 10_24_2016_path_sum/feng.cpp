@@ -20,3 +20,12 @@ public:
     }
 };
 
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int sum) {
+        if(root == NULL) return false;
+        sum -= root->val;
+        if((NULL==root->left) && (NULL==root->right)) return sum==0;
+        return hasPathSum(root->left,sum) || hasPathSum(root->right,sum);
+    }
+};

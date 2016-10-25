@@ -9,17 +9,9 @@
  */
 class BSTIterator {
 private:
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {} 
-};
-    
-    ListNode *head;
+    queue<TreeNode*> nodes;
 public:
     BSTIterator(TreeNode *root) {
-        ListNode* cur=new ListNode(0);
-        ListNode* curhead=cur;
         stack<TreeNode*> orderstack;
         while(orderstack.size() || root){
             if(root){
@@ -28,24 +20,22 @@ public:
             }else{
                 root=orderstack.top();
                 orderstack.pop();
-                cur->next = new ListNode(root->val);
-                cur=cur->next;
+                nodes.push(root);
                 root=root->right;
             }
         }
-        head = curhead->next;
     }
 
     /** @return whether we have a next smallest number */
     bool hasNext() {
-        return head;
+        return !nodes.empty();
     }
 
     /** @return the next smallest number */
     int next() {
-        int tmp=head->val;
-        head=head->next;
-        return tmp;
+        TreeNode *tmp = nodes.front();
+        nodes.pop();
+        return tmp->val;
     }
 };
 

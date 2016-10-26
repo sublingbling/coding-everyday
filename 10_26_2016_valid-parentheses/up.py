@@ -6,15 +6,13 @@ class Solution(object):
         """
         # build parentheses dictionary
         D = {')':'(', '}':'{', ']':'['}
-        # build coutner container
+        
         stack = []
-        #
         left, right= '({[', ')}]'
         # loop
         for c in s:
             # it's a parentheses
             if c in left:
-                # +1
                 stack.append(c)
             elif c in right :
                 # it's a right one
@@ -27,7 +25,7 @@ class Solution(object):
                         # stack has left 
                         stack.pop()
                     else:
-                        # stack doesn't have left
+                        # stack doesn't have a left
                         return False
                             
         

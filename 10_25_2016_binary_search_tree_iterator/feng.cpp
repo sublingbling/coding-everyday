@@ -54,7 +54,6 @@ public:
 class BSTIterator {
 private:
     stack<TreeNode*> s;
-    queue<TreeNode*> q;
     TreeNode* r;
     TreeNode* n;
 public:

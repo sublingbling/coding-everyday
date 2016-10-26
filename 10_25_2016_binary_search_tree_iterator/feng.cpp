@@ -8,8 +8,10 @@
  * };
  */
 class BSTIterator {
-public:
+private:
     queue<TreeNode*> q;
+    
+public:
     void traversal(TreeNode* r){
         if(NULL == r) return;
         traversal(r->left);

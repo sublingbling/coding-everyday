@@ -44,18 +44,11 @@ private:
 public:
     TreeNode* invertTree(TreeNode* root) {
         if(NULL == root) return root;
-        queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty()){
-            TreeNode* r = q.front();
-            q.pop();
-            TreeNode* t = r->left;
-            r->left = r->right;
-            r->right = t;
-            if(r->left) q.push(r->left);
-            if(r->right) q.push(r->right);
-        }
-        
+        TreeNode* t = root->left;
+        root->left = root->right;
+        root->right = t;
+        invertTree(root->left);
+        invertTree(root->right);
         return root;
     }
 };

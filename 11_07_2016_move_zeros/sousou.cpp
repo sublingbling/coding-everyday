@@ -2,11 +2,9 @@ class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
         int size = nums.size();
-        int i;
-        for (i=0; i<size; i++)
-        {
-            if (0 == nums[i]) break;
-        }
+        int i=0;
+        while (0 != nums[i])
+            i++;
         int j = i;
         while (i < size)
         {

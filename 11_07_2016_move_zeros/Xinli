@@ -8,10 +8,10 @@ void moveZeroes(vector<int>& nums){
 
 void moveZero(vector<int>& nums, int index){
 
-int size=nums.size();
-int i =index;
-int j=index;
-while(i<size){
+  int size=nums.size();
+  int i =index;
+  int j=index;
+
   while(nums [i] != 0 && i < size){
      i++;
      j++;

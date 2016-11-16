@@ -30,10 +30,6 @@ public:
         vector<int> T(sz);
         T[0] = -1;
         for (int i = 1; i < sz; i++) {
-            if (i == 1) {
-                T[i] = 0;
-                continue;
-            }
             int tmp = T[i-1];
             while (tmp >= 0) {
                 if (str[tmp] == str[i-1]) {

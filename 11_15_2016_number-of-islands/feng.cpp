@@ -37,3 +37,35 @@ public:
         return count-1;
     }
 };
+
+
+class Solution {
+private:
+void flood(vector<vector<char>>& m, int x, int y, char a){
+    int w = m[0].size();
+    int h = m.size();
+    if(x<0 || x>=w || y<0 || y>= h || m[y][x]!='1') return;
+    m[y][x] = a;
+    flood(m,x-1,y,a);
+    flood(m,x+1,y,a);
+    flood(m,x,y-1,a);
+    flood(m,x,y+1,a);
+}
+public:
+    //flood '1' to a diffrent char, and count; O(n)
+    int numIslands(vector<vector<char>>& grid) {
+        if(grid.empty()) return 0;
+        
+        int count=0;
+        for(int i=0; i<grid.size();i++){
+            for(int j=0; j<grid[0].size(); j++){
+                if(grid[i][j]=='1'){
+                    flood(grid,j,i,'a');
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};
+

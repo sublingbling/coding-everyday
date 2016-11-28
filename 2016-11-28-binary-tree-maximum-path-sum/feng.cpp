@@ -11,7 +11,7 @@ class Solution {
 private:
     int max_sum;
     //for each node, the max could be 
-    // case can't pass to the parents (which means maxL and maxR don't not include those two case, it will go through max_sum)
+    // case can't pass to the parents (which means maxL and maxR does not include those two case, it will go through max_sum)
     //1. node->val+maxL+maxR
     //2. max(maxL,maxR)
     // case can pass to parents

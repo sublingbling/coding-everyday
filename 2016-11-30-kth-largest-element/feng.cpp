@@ -1,5 +1,6 @@
 class Solution {
 private:
+    //o(n) solution
     int findKthLargest(vector<int>& nums, int l, int r, int k){
         int fast=l, slow=l;
         //choose a random key ans swap to the end, random will have better average performance.

@@ -17,3 +17,20 @@ public:
         return result;
     }
 };
+
+
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+       int* state = new int[m*n];
+       for(int i=m-1; i>=0; i--){
+           for(int j=n-1; j>=0;j--){
+               if(j==n-1 || i==m-1) state[i*n+j]=1;
+               else state[i*n+j]=state[(i+1)*n+j]+state[i*n+j+1];
+           }
+       }
+       int result = state[0];
+       delete[] state;
+       return result;
+    }
+};

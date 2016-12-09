@@ -6,7 +6,7 @@ public:
         int idx = 0;
         while(max_idx<nums.size()-1){
             max_idx = max(max_idx,idx+nums[idx]);
-            if(idx == max_idx && nums[idx]==0) return false;
+            if(idx == max_idx) return false;
             idx++;
         }
         return true;

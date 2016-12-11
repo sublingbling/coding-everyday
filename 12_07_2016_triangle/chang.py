@@ -4,18 +4,23 @@ class Solution:
     @return: An integer, minimum path sum.
     """
     def minimumTotal(self, triangle):
-        # write your code here
-        res=[triangle[0]]
-        N = len(triangle)
-        for i in range(1,len(triangle)):
-            res.append([])
-            for j in range(len(triangle[i])):
-                if j-1>=0 and j< len(triangle[i-1]):
-                    res[i].append(min(res[i-1][j-1],res[i-1][j])+triangle[i][j])
-                elif j-1>=0:
-                    res[i].append(res[i-1][j-1]+triangle[i][j])
+        if triangle is None or len(triangle) == 0 or len(triangle[-1]) == 0:
+            return 0
+        
+        for i in xrange(len(triangle)):
+            for j in xrange(i+1):
+                if i == 0 and j == 0:
+                    triangle[i][j] = triangle[i][j]
+                elif j == 0:
+                    triangle[i][j] += triangle[i-1][j]
+                elif j == i:
+                    triangle[i][j] += triangle[i-1][j-1]
                 else:
-                    res[i].append(res[i-1][j]+triangle[i][j])
-                 
-        minvalue = min(res[N-1])
-        return minvalue
+                    triangle[i][j] += min(triangle[i-1][j], triangle[i-1][j-1])
+        
+        """minVal = sys.maxint            
+        for j in xrange(len(triangle[-1])):
+            minVal = min(minVal, triangle[-1][j])"""
+        minVal = min(triangle[-1])
+            
+        return minVal

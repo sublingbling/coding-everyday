@@ -18,5 +18,21 @@ class Solution:
         return DP[-1]
     
 #Greedy
-    
+class Solution:
+    # @param A, a list of integers
+    # @return a boolean
+    def canJump(self, A):
+        if A is None or len(A) == 0:
+            return False
+        
+        bound = A[0]
+        
+        for i in xrange(len(A)):
+            if bound >= i:
+                bound = max(A[i]+i, bound)
+        
+        if bound >= len(A) - 1:        
+            return True
+        else:
+            return False  
     

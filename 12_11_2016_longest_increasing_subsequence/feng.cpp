@@ -17,3 +17,19 @@ public:
         return r.size();
     }
 };
+
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        if(nums.empty()) return 0;
+        vector<int> r;
+        for(auto a:nums){
+            if(r.empty()||a>r.back()) r.push_back(a);
+            else{
+                *lower_bound(r.begin(), r.end(), a)=a;
+            }
+        }
+        return r.size();
+    }
+};
